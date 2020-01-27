@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 
 
 
-
-
 class Feelings extends Component {
 
     state = {
@@ -27,11 +25,15 @@ class Feelings extends Component {
         })
     }
 
+
 render() {
+
+
+
     return (
         <>
             <h2> How are you feeling today? </h2>
-            <form>
+            <form noValidate required>
                 <label> Out of 10 </label>
                 <input type="number"
                  onChange={(event) => this.handleChangeFor('feelings', event)}
@@ -42,7 +44,8 @@ render() {
                     {
                         type: 'FEELINGS',
                         payload: this.state.input.feelings
-                    })}> Next
+                    })
+                    }> Next
                 </Link>
         </>
     )

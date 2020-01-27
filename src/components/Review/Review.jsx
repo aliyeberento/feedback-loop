@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { Link } from "react-router-dom";
 
-// import { Link } from "react-router-dom";
 
 
 class Review extends Component {
 
+    
+
+
+    sendData = () => {
+        let survey = {
+            feelings: this.props.store.feelingsReducer,
+            understanding: this.props.store.understandingReducer,
+            support: this.props.store.understandingReducer,
+            comments: this.props.store.commentsReducer
+        }
+        axios.post('/Review', survey)
+        .then( (result) => {
+            console.log('in post route')
+        }).catch ( error => {
+            console.log(error)
+        })
+    }
+   
+
     handleSubmit = (event) => {
-        console.log( 'it works')
+        event.preventDefault();
+        console.log('it works')
+        this.sendData()
     }
 
     render() {
@@ -32,26 +55,32 @@ class Review extends Component {
                     <tbody>
                         <tr>
                             <td>
-
+                                {this.props.store.feelingsReducer}
                             </td>
                             <td>
-
+                                {this.props.store.understandingReducer}
                             </td>
                             <td>
-
+                                {this.props.store.supportReducer}
                             </td>
                             <td>
-                                
+                                {this.props.store.commentsReducer}
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <button onClick = { ( event) => this.handleSubmit(event) } >
+                <button onClick={(event) => this.handleSubmit(event)} >
                     Submit
                 </button>
+                <Link to= "/Feelings"> Restart
+                </Link>
             </>
         )
     }
 }
 
-export default Review
+const mapStateToProps = (store) => ({
+    store
+})
+
+export default connect(mapStateToProps)(Review)

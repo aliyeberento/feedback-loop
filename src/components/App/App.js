@@ -21,7 +21,11 @@ class App extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <br/>
-        <Link to= "/Feelings"> Lets Begin </Link>
+        <Link to= "/Feelings"> 
+          <button type="button">
+            Lets begin
+          </button>
+        </Link>
         {/* <Route path="/Feelings" render = {()=> (<Feelings/>) } /> */}
         <Route path="/Feelings" component={Feelings} />
         <Route path="/Understanding" component={Understanding} /> 
