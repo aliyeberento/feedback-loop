@@ -9,16 +9,17 @@ import Comments from '../Comments/Comments'
 import Review from '../Review/Review'
 
 //theme stuff
-import { ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
+// import { ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
-const theme = createMuiTheme({
-  palette: {
-    primary: '#80C298',
-    secondary: '#717E75'
-  }
-})
+
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: '#80C298',
+//     secondary: '#717E75'
+//   }
+// })
 
 class App extends Component {
 
@@ -26,7 +27,7 @@ class App extends Component {
 
   render() {
     return (
-      <ThemeProvider theme={theme}>
+      // <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
             <header className="App-header">
@@ -40,14 +41,14 @@ class App extends Component {
             </Button>
             </Link>
             {/* <Route path="/Feelings" render = {()=> (<Feelings/>) } /> */}
-            <Route path="/Feelings" component={Feelings} />
+            <Route exact path="/Feelings" component={Feelings} />
             <Route path="/Understanding" component={Understanding} />
             <Route path="/Supported" component={Supported} />
             <Route path="/Comments" component={Comments} />
             <Route path="/Review" component={Review} />
           </div>
         </Router>
-      </ThemeProvider>
+      // </ThemeProvider>
     );
   }
 }
